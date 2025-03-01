@@ -1,6 +1,7 @@
 "use client";
 import { ArrowRight, ArrowRightCircle } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import React, { useState } from "react";
 
 const Answer = () => {
@@ -100,32 +101,53 @@ const Answer = () => {
         <div>
           <div className="p-10 space-y-10">
             <div className="flex flex-col md:flex-row gap-5">
-              <div className="bg-[#f0f7f1] p-10 space-y-5  rounded-lg">
-                <h2 className="text-xl font-medium ">
-                  {button === 0
-                    ? productsData[0].title
-                    : button === 1
-                    ? calcData[0].title
-                    : faqData[0].title}
-                </h2>
-                <ArrowRight
-                  size={40}
-                  className="border text-[#004733] p-2  border-gray-300 rounded-full"
-                />
-                <Image
-                  src={
-                    button === 0
-                      ? productsData[0].img
+              {button == 1 && calcData[0] ? (
+                <Link href={"/mortage-calculator"}>
+                  <div className="bg-[#f0f7f1] p-10 space-y-5  rounded-lg">
+                    <h2 className="text-xl font-medium ">
+                      {calcData[0].title}
+                    </h2>
+                    <ArrowRight
+                      size={40}
+                      className="border text-[#004733] p-2  border-gray-300 rounded-full"
+                    />
+                    <Image
+                      src={calcData[0].img}
+                      alt="asd"
+                      width={350}
+                      height={100}
+                      className="rounded-xl"
+                    />
+                  </div>
+                </Link>
+              ) : (
+                <div className="bg-[#f0f7f1] p-10 space-y-5  rounded-lg">
+                  <h2 className="text-xl font-medium ">
+                    {button === 0
+                      ? productsData[0].title
                       : button === 1
-                      ? calcData[0].img
-                      : faqData[0].img
-                  }
-                  alt="asd"
-                  width={350}
-                  height={100}
-                  className="rounded-xl"
-                />
-              </div>
+                      ? calcData[0].title
+                      : faqData[0].title}
+                  </h2>
+                  <ArrowRight
+                    size={40}
+                    className="border text-[#004733] p-2  border-gray-300 rounded-full"
+                  />
+                  <Image
+                    src={
+                      button === 0
+                        ? productsData[0].img
+                        : button === 1
+                        ? calcData[0].img
+                        : faqData[0].img
+                    }
+                    alt="asd"
+                    width={350}
+                    height={100}
+                    className="rounded-xl"
+                  />
+                </div>
+              )}
               <div className="bg-[#f0f7f1] flex gap-3 md:flex-row flex-col justify-between p-10 w-full  md:w-[70%] rounded-lg">
                 <div className="space-y-5 w-full md:w-[70%]">
                   <h2 className="text-xl font-medium ">
